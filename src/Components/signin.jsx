@@ -61,7 +61,7 @@ export function Signin() {
         toast.success("Signin Success", { id: 5 });
         if (response?.data?.token) {
           localStorage.setItem("token", response?.data?.token);
-          navigate("/home");
+          navigate("/");
         }
       }
     } catch (e) {
@@ -118,7 +118,7 @@ export function Signin() {
         if (response?.data?.token) {
           localStorage.setItem("token", response?.data?.token);
           toast.success("Signup Success", { id: 6 });
-          navigate("/home");
+          navigate("/");
         }
       }
     } catch (e) {

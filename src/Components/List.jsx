@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button, message, Popconfirm } from "antd";
 
@@ -6,6 +6,7 @@ export function List() {
   const [dataArray, setDataArray] = useState([]);
   const location = useLocation();
   const [subjectName, setSubjectName] = useState("");
+  const navigate=useNavigate();
 
   const handleConfirm = (subject_name, date, present, e) => {
     console.log(e);
@@ -43,9 +44,9 @@ export function List() {
       },
     })
       .then(async (response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
+        // if (!response.ok) {
+        //   throw new Error("Failed to fetch data");
+        // }
         const value = await response.json();
         setDataArray(value.finalList);
       })
@@ -72,19 +73,19 @@ export function List() {
         }
       )
         .then(async (response) => {
-          if (!response.ok) {
-            throw new Error("Failed to fetch data");
-          }
+          // if (!response.ok) {
+          //   throw new Error("Failed to fetch data");
+          // }
           const value = await response.json();
           const msg = value.msg;
           if (msg == `Not Signed In`) {
-            navigate("/");
+            navigate("/signin");
           }
           setDataArray(value.finalList);
         })
         .catch((error) => {
           console.error("Error:", error);
-          setDataArray([]); // Clear data array on error
+          setDataArray([]);
         });
     }
   }, [subjectName]);

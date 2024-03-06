@@ -12,15 +12,15 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Signin />} />
         <Route
-          path="/home"
+          path="/"
           element={
             <WithNavbar>
               <ClassList />
             </WithNavbar>
           }
         />
+        <Route path="/signin" element={<Signin />} />
         <Route
           path="/list"
           element={

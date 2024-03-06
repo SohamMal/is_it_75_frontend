@@ -15,16 +15,15 @@ export function Navbar() {
     const handleLogout = () => {
         localStorage.removeItem('token');
         navigate('/');
-
-        console.log("Logged out!");
         setShowLogout(false);
+        window.location.reload();
     };
 
     return (
         <nav>
             <div>
                 <img src={logo} alt="Logo" className="logo-img" onClick={()=>{
-                    navigate('/home');
+                    navigate('/');
                 }}/>
             </div>
             <div>

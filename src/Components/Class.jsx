@@ -14,10 +14,14 @@ export function Card({ Name}) {
                 }
             })
             .then(async response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch data');
-                }
+                // if (!response.ok) {
+                //     throw new Error('Failed to fetch data');
+                // }
                 const value = await response.json();
+                const msg=value.msg;
+                if(msg==`Not Signed In`){
+                    navigate('/signin');
+                }
                 setPercentage(value.percentage);
             })
             .catch(error => {
@@ -45,7 +49,11 @@ export function Card({ Name}) {
                 </div>
                 <div className="add-class">
                     <button onClick={()=>{
-                        navigate('/addclass');
+                        navigate('/addclass', {
+                            state:{
+                                subject_name:Name
+                            }
+                        });
                     }}>+</button>
                 </div>
             </div>

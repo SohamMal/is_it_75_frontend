@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, message, Space } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function AddClass() {
     const navigate=useNavigate();
     const [messageApi, contextHolder] = message.useMessage();
-    const [className, setClassName] = useState('');
     const [date, setDate] = useState('');
     const [present, setPresent] = useState(false);
+    const location = useLocation();
+    const [subjectName, setSubjectName] = useState("");
+
+
+    useEffect(() => {
+        setSubjectName(location.state ? location.state.subject_name : "");
+      }, [location.state]);
 
     const success = () => {
         messageApi.open({
@@ -20,7 +26,7 @@ function AddClass() {
         event.preventDefault();
 
         const responseBody = {
-            subject_name: className,
+            subject_name: subjectName,
             date,
             present
         };
@@ -37,7 +43,7 @@ function AddClass() {
             const value = await response.json();
             const msg = value.msg;
             if(msg==`Not Signed In`){
-                navigate('/');
+                navigate('/signin');
             }else {
                 messageApi.success(msg);
             }
@@ -48,7 +54,6 @@ function AddClass() {
         });
 
         // Reset form after submission
-        setClassName('');
         setDate('');
         setPresent(false);
     };
@@ -62,18 +67,7 @@ function AddClass() {
                 <div>
                 <label>
                     Class Name:
-                    <select
-                        value={className}
-                        onChange={(e) => setClassName(e.target.value)}
-                        required>
-                        <option value="">Select a class</option>
-                        <option value="OOP">OOP</option>
-                        <option value="DBMS">DBMS</option>
-                        <option value="DMS">DMS</option>
-                        <option value="MPMC">MPMC</option>
-                        <option value="SSOS">SSOS</option>
-                        <option value="EVS">EVS</option>
-                    </select>   
+                    <h3>{subjectName}</h3>
                 </label>
 
                 </div>

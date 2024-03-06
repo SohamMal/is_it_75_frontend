@@ -30,11 +30,12 @@ export function Navbar() {
             <div>
                 <ul>
                     <li className="nav-item">About</li>
-                    <li className="nav-item">Tutorial</li>
+                    <li className="nav-item"><a href="https://www.youtube.com/watch?v=DwxGFfJON7Q" target="_blank" rel="noopener noreferrer">Tutorial</a></li>
                     <li className="profile-icon" onClick={handleProfileClick}>
                         <img src={accountIcon} alt="profile" className="Profile-img" />
                         {showLogout && (
                             <div className="dropdown-content">
+                                <button className='tut_button'><a href="https://www.youtube.com/watch?v=DwxGFfJON7Q" target="_blank" rel="noopener noreferrer">Tutorial</a></button>
                                 <button className="logout-button" onClick={handleLogout}>Log out</button>
                             </div>
                         )}

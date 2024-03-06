@@ -46,18 +46,24 @@ nav ul li:last-child {
   margin-right: 0;
 }
 
+nav ul li > a{
+  text-decoration: none;
+  color: white;
+}
+
 nav ul li:hover {
   transform: translateY(-3px);
+  cursor: pointer;
 }
 
 .Profile-img {
   width: 50px;
-  height: 50px; /* Set height to match other items */
+  height: 50px; 
 }
 
 .logo-img {
   width: 50px;
-  height: auto; /* Maintain aspect ratio */
+  height: auto; 
   transition: transform 0.3s ease;
 }
 
@@ -67,14 +73,18 @@ nav ul li:hover {
 
 @media only screen and (max-width: 600px) {
   .nav-item {
-    display: none; /* Hide the About and Tutorial items on small devices */
+    display: none;
+  }
+  .dropdown-content .tut_button{
+    display: block;
   }
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  /* background-color: rgba(256, 256, 256, 0.8); */
+  background-color: rgba(256, 256, 256, 0.8);
+  color: #0056b3;
   border-radius: 10px;
   min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -82,7 +92,6 @@ nav ul li:hover {
 }
 
 .dropdown-content button {
-  background-color: red;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -93,8 +102,23 @@ nav ul li:hover {
   text-align: left;
 }
 
-.dropdown-content button:hover {
+.logout-button{
+  background-color: red;
+}
+
+.logout-button:hover {
   background-color: darkred;
+}
+
+.tut_button > a{
+  font-size: 15px;
+  text-decoration: none;
+  color: white;
+}
+
+.tut_button{
+  display: none;
+  background-color: #0056b3;
 }
 
 .profile-icon:hover .dropdown-content {

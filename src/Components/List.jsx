@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Button, message, Popconfirm } from "antd";
+import { Button, message, Popconfirm, Spin} from "antd";
 
 export function List() {
   const [dataArray, setDataArray] = useState([]);
@@ -93,7 +93,11 @@ export function List() {
   return (
     <div>
       {dataArray.length === 0 ? (
-        <p>No data available</p>
+        <div className="outer-container">
+          <div className=" w-full justify-center items-center">
+            <Spin size="large" />
+          </div>
+        </div>
       ) : (
         <table>
           <thead>
